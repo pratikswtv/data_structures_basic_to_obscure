@@ -57,13 +57,8 @@ export const obscureTopics: Record<string, ObscureTopic> = {
     title: 'Trie',
     eyebrow: 'Prefix Tree',
     description: 'Store strings character by character along shared prefixes.',
-    overview:
-      'A trie (prefix tree) maps each edge to a character. Common prefixes are stored once — "cat" and "car" share the path c → a before diverging. Lookups walk one character at a time; no hashing collisions, but sparse tries can waste pointers.',
-    keyPoints: [
-      'O(m) lookup where m is key length — independent of how many keys are stored.',
-      'Perfect for autocomplete, IP routing tables, and spell-check dictionaries.',
-      'Natural fit for prefix queries: all keys starting with "pre".',
-    ],
+    overview: '',
+    keyPoints: [],
     next: { label: 'Rope', path: '/rope' },
   },
   rope: {

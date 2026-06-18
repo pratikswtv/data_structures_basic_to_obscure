@@ -48,22 +48,17 @@ export default function SkipListVisualCode() {
           <br />
           <br />
           &nbsp;&nbsp;Key key;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span className="text-gray-500">// sort &amp; search by this</span>
-          <br />
-          &nbsp;&nbsp;Value value;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span className="text-gray-500">// payload at this key</span>
+
           <br />
           &nbsp;&nbsp;SkipNode[] next;&nbsp;&nbsp;&nbsp;&nbsp;
           <span className="text-gray-500">// next[i] → next node at level i</span>
           <br />
           <NextArrayHint />
           <br />
-          &nbsp;&nbsp;SkipNode(Key key, Value value, <span className="text-[#4D96FF]">int</span> level){' '}
+          &nbsp;&nbsp;SkipNode(Key key, <span className="text-[#4D96FF]">int</span> level){' '}
           {'{'}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#6BCB77]">this</span>.key = key;
-          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#6BCB77]">this</span>.value = value;
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#6BCB77]">this</span>.next = <span className="text-[#6BCB77]">new</span> SkipNode[level];
           <br />
@@ -107,7 +102,7 @@ export default function SkipListVisualCode() {
           &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-gray-500">// header spans all levels — search starts here</span>
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#6BCB77]">this</span>.header = <span className="text-[#6BCB77]">new</span> SkipNode(
-          <span className="text-[#FF5757]">null</span>, <span className="text-[#FF5757]">null</span>, max_level);
+          <span className="text-[#FF5757]">null</span>, max_level);
           <br />
           &nbsp;&nbsp;{'}'}
           <br />
@@ -118,6 +113,48 @@ export default function SkipListVisualCode() {
           <span className="font-mono text-[#6BCB77]">header</span> = the{' '}
           <span className="font-mono">-∞</span> sentinel at the top of your diagram — every search
           begins there.
+        </p>
+      </div>
+
+      <div>
+        <h3 className="mb-3 font-mono text-lg font-bold text-[#6BCB77] sm:text-xl">Time complexity</h3>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              op: 'Search',
+              complexity: 'O(log n)',
+              color: '#4D96FF',
+              detail: 'Walk express lanes, then drop down level by level.',
+            },
+            {
+              op: 'Insert',
+              complexity: 'O(log n)',
+              color: '#FFC93C',
+              detail: 'Find position, then splice the new tower at each level.',
+            },
+            {
+              op: 'Delete',
+              complexity: 'O(log n)',
+              color: '#FF5757',
+              detail: 'Find the node, then unlink it at every level it appears.',
+            },
+          ].map(({ op, complexity, color, detail }) => (
+            <div
+              key={op}
+              className="rounded-2xl border-2 border-white/15 bg-white/5 px-4 py-4 sm:px-5 sm:py-5"
+            >
+              <p className="text-sm font-bold tracking-wide text-gray-300 uppercase">{op}</p>
+              <p className="mt-2 font-mono text-2xl font-bold sm:text-3xl" style={{ color }}>
+                {complexity}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">{detail}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm text-gray-400 sm:text-base">
+          Average case with <span className="font-mono">n</span> keys and fair randomization (
+          <span className="font-mono">p = 0.5</span>). Worst case{' '}
+          <span className="font-mono text-gray-300">O(n)</span> if every tower collapses to one lane.
         </p>
       </div>
     </div>
