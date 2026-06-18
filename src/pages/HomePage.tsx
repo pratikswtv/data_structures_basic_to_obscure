@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import lectureHero from '../assets/images/lecture-hero.png'
 import dataStructuresDiagram from '../assets/images/data-structures-diagram.png'
 import coolEmoji from '../assets/images/cool-emoji.png'
@@ -26,6 +28,16 @@ const whyPoints = [
 ]
 
 export default function HomePage() {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) return
+
+    window.setTimeout(() => {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'start' })
+    }, 0)
+  }, [hash])
+
   return (
     <div className="h-dvh snap-y snap-mandatory overflow-y-auto scroll-smooth">
       <section className="relative flex h-dvh min-h-dvh snap-start snap-always flex-col items-center justify-center px-8 text-center">

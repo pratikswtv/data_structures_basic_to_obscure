@@ -92,16 +92,11 @@ export const obscureTopics: Record<string, ObscureTopic> = {
   },
   'bloom-filters': {
     slug: 'bloom-filters',
-    title: 'Bloom Filters',
+    title: 'Bloom Filter',
     eyebrow: 'Probabilistic Set',
     description: 'Tiny structure that answers "maybe yes" or "definitely no".',
-    overview:
-      'A Bloom filter is a bit array plus several hash functions. Insert sets bits; lookup checks if all corresponding bits are 1. False positives are possible; false negatives never happen. Classic when memory is tight and an occasional wrong "yes" is acceptable.',
-    keyPoints: [
-      'No deletes in the standard form — counting Bloom filters add that at a cost.',
-      'Tunable false-positive rate via bit array size and number of hash functions.',
-      'Everywhere in databases, CDNs, and distributed systems (Cassandra, Chrome Safe Browsing).',
-    ],
+    overview: '',
+    keyPoints: [],
     next: { label: 'Cuckoo Filter', path: '/cuckoo-filter' },
   },
   'cuckoo-filter': {
@@ -138,13 +133,8 @@ export const obscureTopics: Record<string, ObscureTopic> = {
     title: 'Hashing',
     eyebrow: 'Foundation',
     description: 'Map keys to array slots — until two keys want the same slot.',
-    overview:
-      'Hash tables use a hash function to index into an array. Collisions are inevitable; chaining (linked lists in buckets) and open addressing (probe for next slot) are the two classic fixes. Good hash functions spread keys uniformly.',
-    keyPoints: [
-      'Average O(1) insert/lookup with a decent hash and load factor control.',
-      'Load factor triggers resize/rehash when the table gets crowded.',
-      'Gateway to obscure variants like cuckoo hashing when you need stricter guarantees.',
-    ],
+    overview: '',
+    keyPoints: [],
     next: { label: 'Cuckoo Hashing', path: '/cuckoo-hashing' },
   },
   'cuckoo-hashing': {

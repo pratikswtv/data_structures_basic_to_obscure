@@ -13,7 +13,10 @@ export default function Part6ObscureMenu() {
   const navigate = useNavigate()
 
   return (
-    <section className="comic-theme part7-topics relative flex h-dvh min-h-dvh snap-start snap-always items-center overflow-x-hidden px-6 py-8 sm:px-10">
+    <section
+      id="part-8"
+      className="comic-theme part7-topics relative flex h-dvh min-h-dvh snap-start snap-always items-center overflow-x-hidden px-6 py-8 sm:px-10"
+    >
       <div className="relative z-10 mx-auto w-full max-w-4xl space-y-8">
         <header className="space-y-4 text-center">
           <p className="text-xl font-bold text-[#C77DFF] sm:text-2xl">

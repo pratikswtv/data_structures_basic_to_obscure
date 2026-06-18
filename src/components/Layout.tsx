@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { obscureMenuOptions } from '../data/obscureTopics'
 
 const navItems = [
-  { to: '/', label: 'Home', end: true },
+  { to: '/#part-8', label: 'Home', end: true },
   ...obscureMenuOptions.map((option) => ({
     to: option.path,
     label: option.title.split(' → ')[0],
