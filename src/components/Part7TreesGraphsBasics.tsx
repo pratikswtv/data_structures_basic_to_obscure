@@ -53,7 +53,9 @@ const GRAPH_ORDERS: Record<Lens, string[]> = {
   dfs: ['1', '2', '3', '4', '5', '6'],
 }
 
-function getNode(nodes: readonly { id: string }[], id: string) {
+type GraphNode = { id: string; x: number; y: number }
+
+function getNode(nodes: readonly GraphNode[], id: string) {
   return nodes.find((n) => n.id === id)
 }
 

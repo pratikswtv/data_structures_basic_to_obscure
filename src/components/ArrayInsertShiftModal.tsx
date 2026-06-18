@@ -44,7 +44,7 @@ function buildSteps(): Step[] {
     },
   ]
 
-  let cells = base.map((c) => ({ ...c }))
+  let cells: CellState[] = base.map((c) => ({ ...c }))
 
   for (let from = INITIAL.length - 1; from >= INSERT_AT; from--) {
     const value = INITIAL[from]
@@ -65,7 +65,7 @@ function buildSteps(): Step[] {
 
   const withNew: CellState[] = [
     ...cells,
-    { id: INITIAL.length, value: INSERT_VALUE, slot: INSERT_AT, status: 'new' },
+    { id: INITIAL.length, value: INSERT_VALUE, slot: INSERT_AT, status: 'new' as const },
   ].sort((a, b) => a.slot - b.slot)
 
   steps.push({
