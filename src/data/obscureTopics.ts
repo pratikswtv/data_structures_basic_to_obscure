@@ -18,27 +18,27 @@ export type ObscureMenuOption = {
 export const obscureMenuOptions: ObscureMenuOption[] = [
   {
     title: 'Skip List',
-    subtitle: 'A probabilistic ladder over a linked list',
+    subtitle: 'Express lanes over a linked list',
     path: '/skip-list',
   },
   {
-    title: 'Trie → Rope → Radix Tree',
-    subtitle: 'Prefix trees and their string-optimized cousins',
+    title: 'Trie & Radix Tree',
+    subtitle: 'Prefix trees and compressed paths',
     path: '/trie',
   },
   {
-    title: 'Bloom Filters → Cuckoo Filter',
-    subtitle: 'Probabilistic membership — plus HyperLogLog',
+    title: 'Bloom Filter',
+    subtitle: 'Probabilistic membership tests',
     path: '/bloom-filters',
   },
   {
-    title: 'Hashing → Cuckoo Hashing',
-    subtitle: 'Collisions, buckets, and eviction chains',
+    title: 'Hashing',
+    subtitle: 'Chaining, probing, and cuckoo hashing',
     path: '/hashing',
   },
   {
-    title: 'B+ Tree',
-    subtitle: 'The database index workhorse',
+    title: 'B-tree & B+-tree',
+    subtitle: 'Wide trees for database indexes',
     path: '/b-plus-tree',
   },
 ]
@@ -153,16 +153,11 @@ export const obscureTopics: Record<string, ObscureTopic> = {
   },
   'b-plus-tree': {
     slug: 'b-plus-tree',
-    title: 'B+ Tree',
+    title: 'B-tree and B+-tree',
     eyebrow: 'Tree Variant',
     description: 'Wide, shallow trees designed for disk — and database indexes.',
-    overview:
-      'B+ trees generalize binary search trees to nodes with hundreds of keys. All values live in linked leaf nodes; internal nodes only route. Shallow height means few disk reads per query — why MySQL, PostgreSQL, and SQLite index with them.',
-    keyPoints: [
-      'Optimized for block storage: each node ≈ one disk page.',
-      'Range scans walk the leaf linked list — efficient ORDER BY and BETWEEN.',
-      'Contrast with B-trees: B+ trees duplicate less data in internal nodes.',
-    ],
+    overview: '',
+    keyPoints: [],
   },
 }
 

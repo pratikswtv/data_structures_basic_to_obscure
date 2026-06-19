@@ -35,6 +35,24 @@ const cuckooHashingNotes = [
   },
 ]
 
+const cuckooCycleNotes = [
+  {
+    title: 'Cap the kicks',
+    color: '#FF5757',
+    body: 'During insert, count how many evictions happen. If it passes a limit, assume the kick path is cycling.',
+  },
+  {
+    title: 'Track visited positions',
+    color: '#FFC93C',
+    body: 'A stricter detector remembers table/index pairs touched during this insert. Seeing the same position again means a loop.',
+  },
+  {
+    title: 'Rehash or resize',
+    color: '#6BCB77',
+    body: 'When a cycle is detected, rebuild with new hash functions or a larger table so the keys get new possible homes.',
+  },
+]
+
 export default function HashingPage() {
   return (
     <div className="space-y-10 pb-8">
@@ -236,6 +254,40 @@ export default function HashingPage() {
           Tradeoff: lookup is excellent because it checks only a constant number of locations, but
           insertion is less predictable. High load, bad hash functions, or eviction cycles can force
           a resize/rehash, so cuckoo hashing buys fast reads with more complicated writes.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold text-[#FF5757] sm:text-2xl">
+          Detecting and preventing cycles
+        </h2>
+        <p className="max-w-3xl text-base leading-relaxed text-gray-300 sm:text-lg">
+          A cycle means insertion keeps kicking the same small set of keys around without finding an
+          empty slot. Cuckoo hashing handles this by treating long kick chains as a signal to rebuild.
+        </p>
+
+        <div className="grid gap-4 sm:grid-cols-3">
+          {cuckooCycleNotes.map(({ title, color, body }) => (
+            <div
+              key={title}
+              className="rounded-2xl border-2 border-white/15 bg-white/5 px-4 py-4 sm:px-5 sm:py-5"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className="h-3 w-3 shrink-0 rounded-full"
+                  style={{ backgroundColor: color }}
+                  aria-hidden
+                />
+                <p className="text-base font-bold text-white sm:text-lg">{title}</p>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-gray-300 sm:text-base">{body}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-sm leading-relaxed text-gray-400 sm:text-base">
+          Practical rule: keep the load factor below the danger zone, use good independent hash
+          functions, cap insertion attempts, and rehash when the cap is hit.
         </p>
       </section>
     </div>
